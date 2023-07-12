@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Borodulin\PresenterBundle\DoctrineInteraction;
+namespace Platim\PresenterBundle\DoctrineInteraction;
 
-use Borodulin\PresenterBundle\DataProvider\QueryBuilder\QueryBuilderInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\QueryBuilder;
+use Platim\PresenterBundle\DataProvider\QueryBuilder\QueryBuilderInterface;
 
 class QueryBuilderProxy implements QueryBuilderInterface
 {

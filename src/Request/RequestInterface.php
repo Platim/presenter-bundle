@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Borodulin\PresenterBundle\Request;
+namespace Platim\PresenterBundle\Request;
 
 interface RequestInterface
 {

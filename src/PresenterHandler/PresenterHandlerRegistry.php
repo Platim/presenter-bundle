@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Platim\PresenterBundle\PresenterHandler;
 
-use Platim\PresenterBundle\PresenterContext\ObjectContext;
 use Doctrine\Persistence\Proxy;
+use Platim\PresenterBundle\PresenterContext\ObjectContext;
 
 class PresenterHandlerRegistry
 {

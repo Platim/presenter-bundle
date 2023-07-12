@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Platim\PresenterBundle\Serializer;
 
+use Doctrine\Common\Collections\Collection;
 use Platim\PresenterBundle\DoctrineInteraction\MetadataRegistry;
 use Platim\PresenterBundle\NameConverter\NameConverterRegistry;
 use Platim\PresenterBundle\Presenter\Presenter;
@@ -11,7 +12,6 @@ use Platim\PresenterBundle\PresenterContext\ObjectContext;
 use Platim\PresenterBundle\PresenterContext\ObjectContextFactory;
 use Platim\PresenterBundle\PresenterHandler\PresenterHandlerRegistry;
 use Platim\PresenterBundle\Request\Expand\ExpandRequest;
-use Doctrine\Common\Collections\Collection;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 use Symfony\Component\PropertyInfo\PropertyListExtractorInterface;
 use Symfony\Component\Serializer\NameConverter\NameConverterInterface;

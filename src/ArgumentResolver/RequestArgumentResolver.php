@@ -6,7 +6,7 @@ namespace Platim\PresenterBundle\ArgumentResolver;
 
 use Platim\PresenterBundle\Attribute\Request as RequestAttribute;
 use Platim\PresenterBundle\Exception\ValidationException;
-use Borodulin\PresenterBundle\Request\RequestInterface;
+use Platim\PresenterBundle\Request\RequestInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
