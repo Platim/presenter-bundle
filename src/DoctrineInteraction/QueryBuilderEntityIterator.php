@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Borodulin\PresenterBundle\DoctrineInteraction;
+namespace Platim\PresenterBundle\DoctrineInteraction;
 
-use Borodulin\PresenterBundle\Serializer\LowerCaseNameConverter;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Query\Expr\From;
 use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\ORM\QueryBuilder;
+use Platim\PresenterBundle\Serializer\LowerCaseNameConverter;
 use Symfony\Component\Serializer\NameConverter\NameConverterInterface;
 
 class QueryBuilderEntityIterator

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Borodulin\PresenterBundle\DataProvider\QueryBuilder;
+namespace Platim\PresenterBundle\DataProvider\QueryBuilder;
 
 interface QueryBuilderSortInterface
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Borodulin\PresenterBundle\Request\Pagination;
+namespace Platim\PresenterBundle\Request\Pagination;
 
-use Borodulin\PresenterBundle\DataProvider\QueryBuilder\QueryBuilderPaginationInterface;
+use Platim\PresenterBundle\DataProvider\QueryBuilder\QueryBuilderPaginationInterface;
 
 class PaginationBuilder
 {

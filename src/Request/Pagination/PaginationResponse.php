@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Borodulin\PresenterBundle\Request\Pagination;
+namespace Platim\PresenterBundle\Request\Pagination;
 
 class PaginationResponse implements PaginationResponseInterface
 {

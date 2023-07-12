@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Borodulin\PresenterBundle\PresenterContext;
+namespace Platim\PresenterBundle\PresenterContext;
 
-use Borodulin\PresenterBundle\Request\Filter\FilterRequestInterface;
-use Borodulin\PresenterBundle\Request\Pagination\PaginationRequestInterface;
-use Borodulin\PresenterBundle\Request\Sort\SortRequestInterface;
+use Platim\PresenterBundle\Request\Filter\FilterRequestInterface;
+use Platim\PresenterBundle\Request\Pagination\PaginationRequestInterface;
+use Platim\PresenterBundle\Request\Sort\SortRequestInterface;
 
 class DataProviderContext implements PresenterContextInterface
 {

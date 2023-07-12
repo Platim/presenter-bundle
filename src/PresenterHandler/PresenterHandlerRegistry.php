@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Borodulin\PresenterBundle\PresenterHandler;
+namespace Platim\PresenterBundle\PresenterHandler;
 
-use Borodulin\PresenterBundle\PresenterContext\ObjectContext;
+use Platim\PresenterBundle\PresenterContext\ObjectContext;
 use Doctrine\Persistence\Proxy;
 
 class PresenterHandlerRegistry

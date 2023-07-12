@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Borodulin\PresenterBundle\ArgumentResolver;
+namespace Platim\PresenterBundle\ArgumentResolver;
 
-use Borodulin\PresenterBundle\Attribute\DataProvider;
-use Borodulin\PresenterBundle\Attribute\Presenter as PresenterAttribute;
-use Borodulin\PresenterBundle\Presenter\Presenter;
-use Borodulin\PresenterBundle\Presenter\PresenterInterface;
-use Borodulin\PresenterBundle\PresenterContext\DataProviderContextFactory;
-use Borodulin\PresenterBundle\PresenterContext\ObjectContext;
-use Borodulin\PresenterBundle\PresenterContext\ObjectContextFactory;
+use Platim\PresenterBundle\Attribute\DataProvider;
+use Platim\PresenterBundle\Attribute\Presenter as PresenterAttribute;
+use Platim\PresenterBundle\Presenter\Presenter;
+use Platim\PresenterBundle\Presenter\PresenterInterface;
+use Platim\PresenterBundle\PresenterContext\DataProviderContextFactory;
+use Platim\PresenterBundle\PresenterContext\ObjectContext;
+use Platim\PresenterBundle\PresenterContext\ObjectContextFactory;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface;
 use Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;

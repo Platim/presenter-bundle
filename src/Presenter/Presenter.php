@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Borodulin\PresenterBundle\Presenter;
+namespace Platim\PresenterBundle\Presenter;
 
-use Borodulin\PresenterBundle\PresenterContext\DataProviderContext;
-use Borodulin\PresenterBundle\PresenterContext\ObjectContext;
+use Platim\PresenterBundle\PresenterContext\DataProviderContext;
+use Platim\PresenterBundle\PresenterContext\ObjectContext;
 
 /**
  * @internal

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Borodulin\PresenterBundle\Request\Filter;
+namespace Platim\PresenterBundle\Request\Filter;
 
-use Borodulin\PresenterBundle\DataProvider\QueryBuilder\QueryBuilderFilterInterface;
+use Platim\PresenterBundle\DataProvider\QueryBuilder\QueryBuilderFilterInterface;
 
 class FilterBuilder
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Borodulin\PresenterBundle\Serializer;
+namespace Platim\PresenterBundle\Serializer;
 
 use Symfony\Component\Serializer\NameConverter\NameConverterInterface;
 

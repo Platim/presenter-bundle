@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Borodulin\PresenterBundle\Request\Sort;
+namespace Platim\PresenterBundle\Request\Sort;
 
-use Borodulin\PresenterBundle\DataProvider\QueryBuilder\QueryBuilderSortInterface;
+use Platim\PresenterBundle\DataProvider\QueryBuilder\QueryBuilderSortInterface;
 
 class SortBuilder
 {

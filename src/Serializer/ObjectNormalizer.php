@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Borodulin\PresenterBundle\Serializer;
+namespace Platim\PresenterBundle\Serializer;
 
-use Borodulin\PresenterBundle\DoctrineInteraction\MetadataRegistry;
-use Borodulin\PresenterBundle\NameConverter\NameConverterRegistry;
-use Borodulin\PresenterBundle\Presenter\Presenter;
-use Borodulin\PresenterBundle\PresenterContext\ObjectContext;
-use Borodulin\PresenterBundle\PresenterContext\ObjectContextFactory;
-use Borodulin\PresenterBundle\PresenterHandler\PresenterHandlerRegistry;
-use Borodulin\PresenterBundle\Request\Expand\ExpandRequest;
+use Platim\PresenterBundle\DoctrineInteraction\MetadataRegistry;
+use Platim\PresenterBundle\NameConverter\NameConverterRegistry;
+use Platim\PresenterBundle\Presenter\Presenter;
+use Platim\PresenterBundle\PresenterContext\ObjectContext;
+use Platim\PresenterBundle\PresenterContext\ObjectContextFactory;
+use Platim\PresenterBundle\PresenterHandler\PresenterHandlerRegistry;
+use Platim\PresenterBundle\Request\Expand\ExpandRequest;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 use Symfony\Component\PropertyInfo\PropertyListExtractorInterface;

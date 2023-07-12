@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Borodulin\PresenterBundle\Request\Sort;
+namespace Platim\PresenterBundle\Request\Sort;
 
 interface SortRequestInterface
 {

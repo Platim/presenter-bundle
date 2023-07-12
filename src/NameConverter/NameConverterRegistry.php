@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Borodulin\PresenterBundle\NameConverter;
+namespace Platim\PresenterBundle\NameConverter;
 
-use Borodulin\PresenterBundle\Serializer\DummyNameConverter;
+use Platim\PresenterBundle\Serializer\DummyNameConverter;
 use Symfony\Component\Serializer\NameConverter\NameConverterInterface;
 
 class NameConverterRegistry

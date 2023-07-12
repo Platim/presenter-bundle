@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Borodulin\PresenterBundle\PresenterContext;
+namespace Platim\PresenterBundle\PresenterContext;
 
-use Borodulin\PresenterBundle\Request\Filter\FilterFactory;
-use Borodulin\PresenterBundle\Request\Filter\FilterRequestInterface;
-use Borodulin\PresenterBundle\Request\Pagination\PaginationRequestFactory;
-use Borodulin\PresenterBundle\Request\Pagination\PaginationRequestInterface;
-use Borodulin\PresenterBundle\Request\Sort\SortFactory;
-use Borodulin\PresenterBundle\Request\Sort\SortRequestInterface;
+use Platim\PresenterBundle\Request\Filter\FilterFactory;
+use Platim\PresenterBundle\Request\Filter\FilterRequestInterface;
+use Platim\PresenterBundle\Request\Pagination\PaginationRequestFactory;
+use Platim\PresenterBundle\Request\Pagination\PaginationRequestInterface;
+use Platim\PresenterBundle\Request\Sort\SortFactory;
+use Platim\PresenterBundle\Request\Sort\SortRequestInterface;
 use Symfony\Component\HttpFoundation\InputBag;
 
 class DataProviderContextFactory

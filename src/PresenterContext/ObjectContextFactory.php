@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Borodulin\PresenterBundle\PresenterContext;
+namespace Platim\PresenterBundle\PresenterContext;
 
-use Borodulin\PresenterBundle\Request\Expand\ExpandFactory;
-use Borodulin\PresenterBundle\Request\Expand\ExpandRequestInterface;
+use Platim\PresenterBundle\Request\Expand\ExpandFactory;
+use Platim\PresenterBundle\Request\Expand\ExpandRequestInterface;
 use Symfony\Component\HttpFoundation\InputBag;
 use Symfony\Component\Serializer\NameConverter\NameConverterInterface;
 

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Borodulin\PresenterBundle\DependencyInjection;
+namespace Platim\PresenterBundle\DependencyInjection;
 
-use Borodulin\PresenterBundle\PresenterHandler\PresenterHandlerRegistry;
+use Platim\PresenterBundle\PresenterHandler\PresenterHandlerRegistry;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 

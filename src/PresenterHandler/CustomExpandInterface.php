@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Borodulin\PresenterBundle\PresenterHandler;
+namespace Platim\PresenterBundle\PresenterHandler;
 
 interface CustomExpandInterface
 {

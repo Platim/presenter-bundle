@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Borodulin\PresenterBundle\DependencyInjection;
+namespace Platim\PresenterBundle\DependencyInjection;
 
-use Borodulin\PresenterBundle\NameConverter\NameConverterRegistry;
+use Platim\PresenterBundle\NameConverter\NameConverterRegistry;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\Serializer\NameConverter\NameConverterInterface;

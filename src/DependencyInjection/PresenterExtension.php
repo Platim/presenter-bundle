@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Borodulin\PresenterBundle\DependencyInjection;
+namespace Platim\PresenterBundle\DependencyInjection;
 
-use Borodulin\PresenterBundle\Attribute\AsPresenterHandler;
-use Borodulin\PresenterBundle\Attribute\NameConverter;
-use Borodulin\PresenterBundle\Attribute\Presenter;
-use Borodulin\PresenterBundle\DataProvider\DataProviderInterface;
-use Borodulin\PresenterBundle\PresenterHandler\PresenterHandlerInterface;
+use Platim\PresenterBundle\Attribute\AsPresenterHandler;
+use Platim\PresenterBundle\Attribute\NameConverter;
+use Platim\PresenterBundle\Attribute\Presenter;
+use Platim\PresenterBundle\DataProvider\DataProviderInterface;
+use Platim\PresenterBundle\PresenterHandler\PresenterHandlerInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

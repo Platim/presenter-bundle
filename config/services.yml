@@ -20,30 +20,30 @@ services:
     autowire: true
 
 
-  Borodulin\PresenterBundle\ArgumentResolver\PresenterResolver:
+  Platim\PresenterBundle\ArgumentResolver\PresenterResolver:
     tags:
       - { name: controller.argument_value_resolver, priority: 50 }
 
-  Borodulin\PresenterBundle\ArgumentResolver\RequestArgumentResolver:
+  Platim\PresenterBundle\ArgumentResolver\RequestArgumentResolver:
     tags:
       - { name: controller.argument_value_resolver, priority: 50 }
 
-  Borodulin\PresenterBundle\Request\Expand\ExpandFactory:
+  Platim\PresenterBundle\Request\Expand\ExpandFactory:
     arguments:
       $expandKey: '%presenter.expand_key%'
 
-  Borodulin\PresenterBundle\Request\Sort\SortFactory:
+  Platim\PresenterBundle\Request\Sort\SortFactory:
     arguments:
       $sortKey: '%presenter.sort_key%'
 
-  Borodulin\PresenterBundle\Request\Pagination\PaginationRequestFactory:
+  Platim\PresenterBundle\Request\Pagination\PaginationRequestFactory:
     arguments:
       $pageKey: '%presenter.page_key%'
       $pageSizeKey: '%presenter.page_size_key%'
       $defaultPageSize: '%presenter.default_page_size%'
       $pageStart: '%presenter.page_start%'
 
-  Borodulin\PresenterBundle\Request\Filter\FilterFactory:
+  Platim\PresenterBundle\Request\Filter\FilterFactory:
     arguments:
       $ignored:
         - '%presenter.sort_key%'
@@ -51,17 +51,17 @@ services:
         - '%presenter.page_key%'
         - '%presenter.page_size_key%'
 
-  Borodulin\PresenterBundle\PresenterContext\DataProviderContextFactory: ~
-  Borodulin\PresenterBundle\PresenterContext\ObjectContextFactory: ~
+  Platim\PresenterBundle\PresenterContext\DataProviderContextFactory: ~
+  Platim\PresenterBundle\PresenterContext\ObjectContextFactory: ~
 
-  Borodulin\PresenterBundle\PresenterHandler\PresenterHandlerRegistry: ~
-  Borodulin\PresenterBundle\NameConverter\NameConverterRegistry: ~
-  Borodulin\PresenterBundle\DoctrineInteraction\MetadataRegistry: ~
+  Platim\PresenterBundle\PresenterHandler\PresenterHandlerRegistry: ~
+  Platim\PresenterBundle\NameConverter\NameConverterRegistry: ~
+  Platim\PresenterBundle\DoctrineInteraction\MetadataRegistry: ~
 
-  Borodulin\PresenterBundle\Serializer\ObjectNormalizer:
+  Platim\PresenterBundle\Serializer\ObjectNormalizer:
     tags:
       - { name: serializer.normalizer, priority: 50 }
 
-  Borodulin\PresenterBundle\Serializer\DataProviderNormalizer:
+  Platim\PresenterBundle\Serializer\DataProviderNormalizer:
     tags:
       - { name: serializer.normalizer, priority: 100 }

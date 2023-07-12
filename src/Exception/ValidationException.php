@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Borodulin\PresenterBundle\Exception;
+namespace Platim\PresenterBundle\Exception;
 
 use Symfony\Component\HttpKernel\Exception\HttpException;
 

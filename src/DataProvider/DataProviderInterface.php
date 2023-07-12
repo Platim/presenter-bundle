@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Borodulin\PresenterBundle\DataProvider;
+namespace Platim\PresenterBundle\DataProvider;
 
-use Borodulin\PresenterBundle\DataProvider\QueryBuilder\QueryBuilderInterface;
+use Platim\PresenterBundle\DataProvider\QueryBuilder\QueryBuilderInterface;
 
 interface DataProviderInterface
 {

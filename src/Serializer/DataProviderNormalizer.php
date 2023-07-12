@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace Borodulin\PresenterBundle\Serializer;
+namespace Platim\PresenterBundle\Serializer;
 
-use Borodulin\PresenterBundle\DataProvider\DataProviderInterface;
-use Borodulin\PresenterBundle\DataProvider\QueryBuilder\QueryBuilderInterface;
-use Borodulin\PresenterBundle\NameConverter\NameConverterRegistry;
-use Borodulin\PresenterBundle\Presenter\Presenter;
-use Borodulin\PresenterBundle\PresenterContext\DataProviderContext;
-use Borodulin\PresenterBundle\PresenterContext\DataProviderContextFactory;
-use Borodulin\PresenterBundle\PresenterContext\ObjectContextFactory;
-use Borodulin\PresenterBundle\PresenterHandler\PresenterHandlerRegistry;
-use Borodulin\PresenterBundle\Request\Filter\CustomFilterInterface;
-use Borodulin\PresenterBundle\Request\Filter\FilterBuilder;
-use Borodulin\PresenterBundle\Request\Pagination\PaginationBuilder;
-use Borodulin\PresenterBundle\Request\Pagination\PaginationResponseFactoryInterface;
-use Borodulin\PresenterBundle\Request\Sort\CustomSortInterface;
-use Borodulin\PresenterBundle\Request\Sort\SortBuilder;
+use Platim\PresenterBundle\DataProvider\DataProviderInterface;
+use Platim\PresenterBundle\DataProvider\QueryBuilder\QueryBuilderInterface;
+use Platim\PresenterBundle\NameConverter\NameConverterRegistry;
+use Platim\PresenterBundle\Presenter\Presenter;
+use Platim\PresenterBundle\PresenterContext\DataProviderContext;
+use Platim\PresenterBundle\PresenterContext\DataProviderContextFactory;
+use Platim\PresenterBundle\PresenterContext\ObjectContextFactory;
+use Platim\PresenterBundle\PresenterHandler\PresenterHandlerRegistry;
+use Platim\PresenterBundle\Request\Filter\CustomFilterInterface;
+use Platim\PresenterBundle\Request\Filter\FilterBuilder;
+use Platim\PresenterBundle\Request\Pagination\PaginationBuilder;
+use Platim\PresenterBundle\Request\Pagination\PaginationResponseFactoryInterface;
+use Platim\PresenterBundle\Request\Sort\CustomSortInterface;
+use Platim\PresenterBundle\Request\Sort\SortBuilder;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\SerializerAwareInterface;
 use Symfony\Component\Serializer\SerializerInterface;

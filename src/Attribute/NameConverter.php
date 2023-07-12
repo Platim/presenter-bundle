@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Borodulin\PresenterBundle\Attribute;
+namespace Platim\PresenterBundle\Attribute;
 
 #[\Attribute(\Attribute::TARGET_CLASS)]
 class NameConverter

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Borodulin\PresenterBundle\PresenterContext;
+namespace Platim\PresenterBundle\PresenterContext;
 
 interface PresenterContextInterface
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Borodulin\PresenterBundle\Request\Filter;
+namespace Platim\PresenterBundle\Request\Filter;
 
 interface FilterRequestInterface
 {
