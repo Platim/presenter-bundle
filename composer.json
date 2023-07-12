@@ -1,5 +1,5 @@
 {
-    "name": "borodulin/presenter-bundle",
+    "name": "platim/presenter-bundle",
     "description": "Presenter Bundle",
     "type": "symfony-bundle",
     "license": "MIT",
@@ -9,8 +9,9 @@
             "email": "borodulin@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
+    "version": "1.0.0",
     "require": {
         "php": ">=8.1",
         "ext-json": "*",
