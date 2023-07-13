@@ -34,6 +34,7 @@ class RequestArgumentResolver implements ArgumentValueResolverInterface
         $reflection = new \ReflectionClass($type);
 
         return $reflection->implementsInterface(RequestInterface::class)
+            || \count($reflection->getAttributes(RequestAttribute::class)) > 0
             || \count($argument->getAttributes(RequestAttribute::class)) > 0;
     }
 
@@ -55,7 +56,12 @@ class RequestArgumentResolver implements ArgumentValueResolverInterface
         } else {
             $normalData = $request->query->all();
         }
+
         $attributes = $argument->getAttributes(RequestAttribute::class);
+        if (0 === \count($attributes)) {
+            $reflection = new \ReflectionClass($argument->getType());
+            $attributes = $reflection->getAttributes(RequestAttribute::class);
+        }
         $formClass = $attributes[0]?->formClass ?? null;
         if (null !== $formClass) {
             $form = $this->formFactory->create($formClass, null, [
@@ -120,7 +126,7 @@ class RequestArgumentResolver implements ArgumentValueResolverInterface
         $formName = $form->getName();
         $errors = [];
 
-        foreach ($form->getErrors(true, true) as $formError) {
+        foreach ($form->getErrors(true) as $formError) {
             $name = $formError->getOrigin()->getName() === $formName ? [] : [$formError->getOrigin()->getName()];
             $origin = $formError->getOrigin();
 

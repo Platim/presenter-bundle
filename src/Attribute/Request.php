@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Platim\PresenterBundle\Attribute;
 
-#[\Attribute(\Attribute::TARGET_CLASS)]
+#[\Attribute(\Attribute::TARGET_PARAMETER)]
 class Request
 {
     public function __construct(
