@@ -66,7 +66,7 @@ class ObjectNormalizer implements NormalizerInterface, SerializerAwareInterface
         if (\is_object($data)) {
             $class = $data::class;
 
-            return null !== $this->presenterHandlerRegistry->hasPresenterHandlerForClass($class)
+            return $this->presenterHandlerRegistry->hasPresenterHandlerForClass($class)
                 || null !== $this->metadataRegistry->getMetadataForClass($class);
         }
 
