@@ -103,10 +103,8 @@ class ObjectNormalizer implements NormalizerInterface, SerializerAwareInterface
             $presented = $object;
         }
 
-        if (\is_object($presented)) {
-            if ($class !== $presented::class) {
-                $presented = $this->normalizer->normalize($presented, $format, $contextArray);
-            }
+        if (\is_object($presented) && $class !== $presented::class) {
+            $presented = $this->normalizer->normalize($presented, $format, $contextArray);
         }
 
         if (\is_object($presented)) {
@@ -145,15 +143,15 @@ class ObjectNormalizer implements NormalizerInterface, SerializerAwareInterface
             }
         }
         $expandTree = [];
-        if (\in_array('*', $expand)) {
+        if (\in_array('*', $expand, true)) {
             foreach ($expandableNormalized as $key => $value) {
                 $expandTree[$key] = [];
             }
         }
-        $expand = array_filter($expand, fn ($item) => !str_contains($item, '*'));
+        $expand = array_filter($expand, static fn ($item) => !str_contains($item, '*'));
         foreach ($expand as $expandItem) {
             $normalizedNames = array_map(
-                fn ($item) => $nameConverter->normalize($item),
+                static fn ($item) => $nameConverter->normalize($item),
                 explode('.', $expandItem)
             );
             $normalizedName = array_shift($normalizedNames);

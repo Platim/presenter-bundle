@@ -41,14 +41,14 @@ class PaginationBuilder
                 $pageSize,
                 $items
             );
-        } else {
-            return $responseFactory->createResponse(
-                $totalCount,
-                $page,
-                $pageCount,
-                $pageSize,
-                $items
-            );
         }
+
+        return $responseFactory->createResponse(
+            $totalCount,
+            $page,
+            $pageCount,
+            $pageSize,
+            $items
+        );
     }
 }
