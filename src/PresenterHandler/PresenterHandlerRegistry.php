@@ -20,7 +20,7 @@ class PresenterHandlerRegistry
             $this->classHandlers[$class][$group] = [$handler, $method, $priority];
         }
         foreach ($interfaceHandlers as [$interface, $group, $handler, $method, $priority]) {
-            $this->interfaceHandlers[$interface][$group] = [$handler, $method, $priority];
+            $this->interfaceHandlers[$group][$interface] = [$handler, $method, $priority];
         }
     }
 
@@ -54,16 +54,31 @@ class PresenterHandlerRegistry
         if (\count($this->interfaceHandlers)) {
             $interfaces = class_implements($class);
             if (\is_array($interfaces) && \count($interfaces)) {
-                $interfaceHandlers = array_intersect_key($this->interfaceHandlers, array_flip($interfaces));
-                if (\count($interfaceHandlers)) {
-                    usort($interfaceHandlers, static fn ($item1, $item2) => $item2['priority'] <=> $item1['priority']);
-
-                    return array_shift($interfaceHandlers);
+                $interfaceHandlersForGroup = array_intersect_key($this->interfaceHandlers[$group], array_flip($interfaces));
+                $interfaceHandler = $this->findInterfaceHandlerBestPriority($interfaceHandlersForGroup);
+                if (null !== $interfaceHandler) {
+                    return $interfaceHandler;
+                }
+                $interfaceHandlersDefault = array_intersect_key($this->interfaceHandlers[ObjectContext::DEFAULT_GROUP], array_flip($interfaces));
+                $interfaceHandler = $this->findInterfaceHandlerBestPriority($interfaceHandlersDefault);
+                if (null !== $interfaceHandler) {
+                    return $interfaceHandler;
                 }
             }
         }
 
         return [null, null];
+    }
+
+    private function findInterfaceHandlerBestPriority(array $interfaceHandlers): ?array
+    {
+        if (\count($interfaceHandlers)) {
+            usort($interfaceHandlers, static fn ($item1, $item2) => $item2['priority'] <=> $item1['priority']);
+
+            return array_shift($interfaceHandlers);
+        }
+
+        return null;
     }
 
     public function getCustomExpandFieldsForClass(string $class, string $group): ?CustomExpandInterface
