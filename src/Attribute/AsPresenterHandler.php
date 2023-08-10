@@ -11,6 +11,7 @@ class AsPresenterHandler
         public ?string $handles = null,
         public ?string $method = null,
         public ?string $group = null,
+        public ?int $priority = null,
     ) {
     }
 }

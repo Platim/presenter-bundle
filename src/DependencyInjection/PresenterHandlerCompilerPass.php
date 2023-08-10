@@ -16,7 +16,8 @@ class PresenterHandlerCompilerPass extends AbstractCompilerPass
             return;
         }
 
-        $handlers = [];
+        $classHandlersArray = [];
+        $interfaceHandlersArray = [];
         foreach ($container->findTaggedServiceIds('presenter.handler', true) as $serviceId => $tags) {
             $className = $this->getServiceClass($container, $serviceId);
             if (null === $className) {
@@ -28,6 +29,7 @@ class PresenterHandlerCompilerPass extends AbstractCompilerPass
                 $methodName = $tag['method'] ?? '__invoke';
                 $handles = $tag['handles'] ?? null;
                 $group = $tag['group'] ?? 'default';
+                $priority = $tag['priority'] ?? 0;
 
                 if (null === $handles) {
                     try {
@@ -64,13 +66,25 @@ class PresenterHandlerCompilerPass extends AbstractCompilerPass
                     $handles = (string) $type;
                 }
 
-                $handlers[$handles . ':' . $group] = [$handles, $group, new Reference($reflection->getName()), $methodName];
+                if (class_exists($handles)) {
+                    $classHandlersArray[$handles . ':' . $group][] = [$handles, $group, new Reference($reflection->getName()), $methodName, $priority];
+                } elseif (interface_exists($handles)) {
+                    $interfaceHandlersArray[$handles . ':' . $group][] = [$handles, $group, new Reference($reflection->getName()), $methodName, $priority];
+                }
             }
         }
-
-        if ($handlers) {
-            $commandDefinition = $container->getDefinition(PresenterHandlerRegistry::class);
-            $commandDefinition->setArgument('$handlers', $handlers);
+        $classHandlers = [];
+        foreach ($classHandlersArray as $array) {
+            usort($array, static fn ($item1, $item2) => $item2['priority'] <=> $item1['priority']);
+            $classHandlers[] = array_shift($array);
         }
+        $interfaceHandlers = [];
+        foreach ($interfaceHandlersArray as $array) {
+            usort($array, static fn ($item1, $item2) => $item2['priority'] <=> $item1['priority']);
+            $interfaceHandlers[] = array_shift($array);
+        }
+        $commandDefinition = $container->getDefinition(PresenterHandlerRegistry::class);
+        $commandDefinition->setArgument('$classHandlers', $classHandlers);
+        $commandDefinition->setArgument('$interfaceHandlers', $interfaceHandlers);
     }
 }

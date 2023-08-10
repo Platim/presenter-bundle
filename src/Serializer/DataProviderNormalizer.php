@@ -106,14 +106,14 @@ class DataProviderNormalizer implements NormalizerInterface, SerializerAwareInte
         DataProviderContext $dataProviderContext,
     ): QueryBuilderInterface {
         $queryBuilder = clone $dataProvider->getQueryBuilder();
-        if ($dataProviderContext->isSortEnabled() && null !== $dataProviderContext->sortRequest) {
+        if (null !== $dataProviderContext->sortRequest && $dataProviderContext->isSortEnabled()) {
             (new SortBuilder())->sort(
                 $dataProviderContext->sortRequest,
                 $queryBuilder,
                 $dataProvider instanceof CustomSortInterface ? $dataProvider : null
             );
         }
-        if ($dataProviderContext->isFilterEnabled() && null !== $dataProviderContext->filterRequest) {
+        if (null !== $dataProviderContext->filterRequest && $dataProviderContext->isFilterEnabled()) {
             (new FilterBuilder())->filter(
                 $dataProviderContext->filterRequest,
                 $queryBuilder,

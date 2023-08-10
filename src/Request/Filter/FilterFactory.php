@@ -27,7 +27,7 @@ class FilterFactory
     {
         $result = [];
         foreach ($inputBag->all() as $key => $value) {
-            if ('' !== $value && !\in_array($key, $ignored)) {
+            if ('' !== $value && !\in_array($key, $ignored, true)) {
                 $result[$key] = $value;
             }
         }
