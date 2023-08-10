@@ -52,15 +52,15 @@ class QueryBuilderEntityIterator
                         $joinClass = $parentMetadata->getAssociationTargetClass($joinName);
                         $aliases[$join->getAlias()] = $metadata = $em->getClassMetadata($joinClass);
                         $aliasTree[$join->getAlias()] = $joinName;
+
                         yield $this->nameConverter->normalize($joinName) => [$join->getAlias() => $metadata];
-                    } else {
-                        if (isset($aliases[$aliasName], $aliasTree[$aliasName])) {
-                            $aliasMetadata = $aliases[$aliasName];
-                            $aliasTreeName = $aliasTree[$join->getAlias()] = $aliasTree[$aliasName] . '.' . $joinName;
-                            $joinClass = $aliasMetadata->getAssociationTargetClass($joinName);
-                            $aliases[$join->getAlias()] = $metadata = $em->getClassMetadata($joinClass);
-                            yield $this->nameConverter->normalize($aliasTreeName) => [$join->getAlias() => $metadata];
-                        }
+                    } elseif (isset($aliases[$aliasName], $aliasTree[$aliasName])) {
+                        $aliasMetadata = $aliases[$aliasName];
+                        $aliasTreeName = $aliasTree[$join->getAlias()] = $aliasTree[$aliasName] . '.' . $joinName;
+                        $joinClass = $aliasMetadata->getAssociationTargetClass($joinName);
+                        $aliases[$join->getAlias()] = $metadata = $em->getClassMetadata($joinClass);
+
+                        yield $this->nameConverter->normalize($aliasTreeName) => [$join->getAlias() => $metadata];
                     }
                 }
             }
