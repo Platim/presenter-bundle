@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Platim\PresenterBundle\Serializer;
 
 use Doctrine\Common\Collections\Collection;
+use Doctrine\Persistence\Proxy;
 use Platim\PresenterBundle\DoctrineInteraction\MetadataRegistry;
 use Platim\PresenterBundle\NameConverter\NameConverterRegistry;
 use Platim\PresenterBundle\Presenter\Presenter;
@@ -64,10 +65,7 @@ class ObjectNormalizer implements NormalizerInterface, SerializerAwareInterface
     public function supportsNormalization($data, string $format = null): bool
     {
         if (\is_object($data)) {
-            if ($data instanceof Presenter) {
-                return true;
-            }
-            $class = $data::class;
+            $class = $this->getObjectClass($data);
 
             return $this->presenterHandlerRegistry->hasPresenterHandlerForClass($class)
                 || null !== $this->metadataRegistry->getMetadataForClass($class);
@@ -84,7 +82,8 @@ class ObjectNormalizer implements NormalizerInterface, SerializerAwareInterface
     ): array {
         $data = [];
 
-        $class = $object::class;
+        $class = $this->getObjectClass($object);
+
         $nameConverter = $objectContext->nameConverter ?? $this->nameConverter;
         $group = $objectContext->group;
         $contextArray = $objectContext->toArray();
@@ -220,5 +219,18 @@ class ObjectNormalizer implements NormalizerInterface, SerializerAwareInterface
     public function setSerializer(SerializerInterface $serializer): void
     {
         $this->normalizer = $serializer;
+    }
+
+    private function getObjectClass(object $object): string
+    {
+        if ($object instanceof Presenter) {
+            $object = $object->getObject();
+        }
+        $class = $object::class;
+        if (is_subclass_of($class, Proxy::class)) {
+            $class = get_parent_class($class);
+        }
+
+        return $class;
     }
 }
