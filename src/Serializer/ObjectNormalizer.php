@@ -64,6 +64,9 @@ class ObjectNormalizer implements NormalizerInterface, SerializerAwareInterface
     public function supportsNormalization($data, string $format = null): bool
     {
         if (\is_object($data)) {
+            if ($data instanceof Presenter) {
+                return true;
+            }
             $class = $data::class;
 
             return $this->presenterHandlerRegistry->hasPresenterHandlerForClass($class)
