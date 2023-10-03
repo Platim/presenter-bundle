@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Platim\PresenterBundle\Request\Sort;
 
-use Platim\PresenterBundle\DataProvider\QueryBuilder\QueryBuilderSortInterface;
+use Platim\Presenter\Contracts\DataProvider\QueryBuilder\QueryBuilderSortInterface;
 
 class SortBuilder
 {

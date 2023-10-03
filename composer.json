@@ -9,6 +9,16 @@
             "email": "borodulin@gmail.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git@github.com:platim/presenter-contracts.git"
+        },
+        {
+            "type": "git",
+            "url": "git@github.com:platim/presenter-doctrine.git"
+        }
+    ],
     "minimum-stability": "stable",
     "prefer-stable": true,
     "version": "1.0.0",
@@ -21,11 +31,13 @@
         "symfony/serializer": "^5.4",
         "symfony/http-foundation": "^5.4",
         "symfony/yaml": "^5.4",
-        "doctrine/orm": "^2.7",
         "symfony/validator": "^5.4",
-        "symfony/form": "^5.4"
+        "symfony/form": "^5.4",
+        "platim/presenter-contracts": "dev-main",
+        "platim/presenter-doctrine": "dev-main"
     },
     "require-dev": {
+        "roave/security-advisories": "dev-latest",
         "phpunit/phpunit": "^9.5",
         "symfony/framework-bundle": "^5.4",
         "friendsofphp/php-cs-fixer": "^3.0",

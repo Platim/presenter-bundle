@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Platim\PresenterBundle\Request\Pagination;
 
-use Platim\PresenterBundle\DataProvider\QueryBuilder\QueryBuilderPaginationInterface;
+use Platim\Presenter\Contracts\DataProvider\QueryBuilder\QueryBuilderPaginationInterface;
 
 class PaginationBuilder
 {
