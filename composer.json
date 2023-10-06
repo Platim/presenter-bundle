@@ -9,16 +9,6 @@
             "email": "borodulin@gmail.com"
         }
     ],
-    "repositories": [
-        {
-            "type": "git",
-            "url": "git@github.com:platim/presenter-contracts.git"
-        },
-        {
-            "type": "git",
-            "url": "git@github.com:platim/presenter-doctrine.git"
-        }
-    ],
     "minimum-stability": "stable",
     "prefer-stable": true,
     "version": "1.0.0",
