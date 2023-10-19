@@ -24,10 +24,6 @@ services:
     tags:
       - { name: controller.argument_value_resolver, priority: 50 }
 
-  Platim\PresenterBundle\ArgumentResolver\RequestArgumentResolver:
-    tags:
-      - { name: controller.argument_value_resolver, priority: 50 }
-
   Platim\PresenterBundle\Request\Expand\ExpandFactory:
     arguments:
       $expandKey: '%presenter.expand_key%'
