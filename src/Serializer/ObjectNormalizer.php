@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace Platim\PresenterBundle\Serializer;
 
-use Doctrine\Common\Collections\Collection;
-use Doctrine\Persistence\Proxy;
-use Platim\PresenterBundle\DoctrineInteraction\MetadataRegistry;
+use Platim\Presenter\Contracts\Metadata\MetadataRegistryInterface;
 use Platim\PresenterBundle\NameConverter\NameConverterRegistry;
 use Platim\PresenterBundle\Presenter\Presenter;
 use Platim\PresenterBundle\PresenterContext\ObjectContext;
@@ -30,7 +28,7 @@ class ObjectNormalizer implements NormalizerInterface, SerializerAwareInterface
         private readonly NameConverterRegistry $nameConverterRegistry,
         private readonly PropertyAccessorInterface $propertyAccessor,
         private readonly PropertyListExtractorInterface $propertyListExtractor,
-        private readonly MetadataRegistry $metadataRegistry,
+        private readonly MetadataRegistryInterface $metadataRegistry,
         private readonly ObjectContextFactory $objectContextFactory,
         NameConverterInterface $nameConverter = null
     ) {
@@ -93,7 +91,7 @@ class ObjectNormalizer implements NormalizerInterface, SerializerAwareInterface
         $metaData = $this->metadataRegistry->getMetadataForClass($class);
 
         if (\is_callable([$presenterHandler, $method])) {
-            $presented = \call_user_func([$presenterHandler, $method], $object, $presenterContext);
+            $presented = $presenterHandler->$method($object, $presenterContext);
         } elseif (null !== $metaData) {
             $presented = [];
             foreach ($metaData->getFieldNames() as $fieldName) {
@@ -177,13 +175,11 @@ class ObjectNormalizer implements NormalizerInterface, SerializerAwareInterface
                     if ($this->propertyAccessor->isReadable($object, $expandableField)) {
                         $value = $this->propertyAccessor->getValue($object, $expandableField);
                         if (null !== $metaData && $metaData->hasAssociation($expandableField)) {
-                            $multiple = $metaData->isCollectionValuedAssociation($expandableField);
+                            $multiple = $metaData->isAssociationMultiple($expandableField);
                             if (null === $value) {
                                 $result[$expandName] = null;
                             } elseif ($multiple) {
-                                if ($value instanceof Collection) {
-                                    $value = $value->toArray();
-                                }
+                                $value = $metaData->getAssociationValueAsArray($value);
                                 $result[$expandName] = array_map(
                                     fn ($association) => $this->expand($association, $expandContext, $format, $presenterContext),
                                     $value
@@ -196,12 +192,12 @@ class ObjectNormalizer implements NormalizerInterface, SerializerAwareInterface
                         }
                     }
                 } elseif (\is_callable($expandableField)) {
-                    $value = \call_user_func($expandableField, $object, $presenterContext);
+                    $value = $expandableField($object, $presenterContext);
                     if (\is_object($value)) {
-                        if ($value instanceof Collection) {
+                        if ($value instanceof \ArrayAccess) {
                             $result[$expandName] = array_map(
                                 fn ($association) => $this->expand($association, $expandContext, $format, $presenterContext),
-                                $value->toArray()
+                                (array) $value
                             );
                         } else {
                             $result[$expandName] = $this->expand($value, $expandContext, $format, $presenterContext);
@@ -226,11 +222,7 @@ class ObjectNormalizer implements NormalizerInterface, SerializerAwareInterface
         if ($object instanceof Presenter) {
             $object = $object->getObject();
         }
-        $class = $object::class;
-        if (is_subclass_of($class, Proxy::class)) {
-            $class = get_parent_class($class);
-        }
 
-        return $class;
+        return $this->metadataRegistry->getObjectClass($object);
     }
 }

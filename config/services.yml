@@ -24,10 +24,6 @@ services:
     tags:
       - { name: controller.argument_value_resolver, priority: 50 }
 
-  Platim\PresenterBundle\ArgumentResolver\RequestArgumentResolver:
-    tags:
-      - { name: controller.argument_value_resolver, priority: 50 }
-
   Platim\PresenterBundle\Request\Expand\ExpandFactory:
     arguments:
       $expandKey: '%presenter.expand_key%'
@@ -56,7 +52,8 @@ services:
 
   Platim\PresenterBundle\PresenterHandler\PresenterHandlerRegistry: ~
   Platim\PresenterBundle\NameConverter\NameConverterRegistry: ~
-  Platim\PresenterBundle\DoctrineInteraction\MetadataRegistry: ~
+  Platim\PresenterBundle\Metadata\MetadataRegistry: ~
+  Platim\Presenter\Contracts\Metadata\MetadataRegistryInterface: '@Platim\PresenterBundle\Metadata\MetadataRegistry'
 
   Platim\PresenterBundle\Serializer\ObjectNormalizer:
     tags:

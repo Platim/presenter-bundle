@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Platim\PresenterBundle\Serializer;
 
-use Platim\PresenterBundle\DataProvider\DataProviderInterface;
-use Platim\PresenterBundle\DataProvider\QueryBuilder\QueryBuilderInterface;
+use Platim\Presenter\Contracts\DataProvider\DataProviderInterface;
+use Platim\Presenter\Contracts\DataProvider\QueryBuilder\QueryBuilderInterface;
 use Platim\PresenterBundle\NameConverter\NameConverterRegistry;
 use Platim\PresenterBundle\Presenter\Presenter;
 use Platim\PresenterBundle\PresenterContext\DataProviderContext;
@@ -90,7 +90,7 @@ class DataProviderNormalizer implements NormalizerInterface, SerializerAwareInte
             );
         }
         if (\is_callable([$presenterHandler, $method])) {
-            $response = \call_user_func([$presenterHandler, $method], $dataProvider, $response, $context, $queryBuilder);
+            $response = $presenterHandler->$method($dataProvider, $response, $context, $queryBuilder);
         }
 
         return $this->normalizer->normalize($response, $format, $context);

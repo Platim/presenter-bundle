@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Platim\PresenterBundle\Request\Filter;
 
-use Platim\PresenterBundle\DataProvider\QueryBuilder\QueryBuilderFilterInterface;
+use Platim\Presenter\Contracts\DataProvider\QueryBuilder\QueryBuilderFilterInterface;
 
 class FilterBuilder
 {

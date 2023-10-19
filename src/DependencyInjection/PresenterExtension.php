@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Platim\PresenterBundle\DependencyInjection;
 
+use Platim\Presenter\Contracts\DataProvider\DataProviderInterface;
 use Platim\PresenterBundle\Attribute\AsPresenterHandler;
 use Platim\PresenterBundle\Attribute\NameConverter;
 use Platim\PresenterBundle\Attribute\Presenter;
-use Platim\PresenterBundle\DataProvider\DataProviderInterface;
 use Platim\PresenterBundle\PresenterHandler\PresenterHandlerInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ChildDefinition;
