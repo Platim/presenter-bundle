@@ -24,7 +24,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class DataProviderNormalizer implements NormalizerInterface, SerializerAwareInterface
 {
-    private NormalizerInterface $normalizer;
+    private NormalizerInterface|SerializerInterface $normalizer;
 
     public function __construct(
         private readonly PresenterHandlerRegistry $presenterHandlerRegistry,
@@ -99,6 +99,14 @@ class DataProviderNormalizer implements NormalizerInterface, SerializerAwareInte
     public function setSerializer(SerializerInterface $serializer): void
     {
         $this->normalizer = $serializer;
+    }
+
+    public function getSupportedTypes(?string $format): array
+    {
+        return [
+            DataProviderInterface::class => true,
+            Presenter::class => true,
+        ];
     }
 
     private function prepareQueryBuilder(

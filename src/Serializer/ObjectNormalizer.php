@@ -20,7 +20,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class ObjectNormalizer implements NormalizerInterface, SerializerAwareInterface
 {
-    private NormalizerInterface $normalizer;
+    private NormalizerInterface|SerializerInterface $normalizer;
     private NameConverterInterface $nameConverter;
 
     public function __construct(
@@ -215,6 +215,13 @@ class ObjectNormalizer implements NormalizerInterface, SerializerAwareInterface
     public function setSerializer(SerializerInterface $serializer): void
     {
         $this->normalizer = $serializer;
+    }
+
+    public function getSupportedTypes(?string $format): array
+    {
+        return [
+            'object' => true,
+        ];
     }
 
     private function getObjectClass(object $object): string
