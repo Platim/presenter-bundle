@@ -12,10 +12,10 @@ use Platim\PresenterBundle\PresenterContext\DataProviderContextFactory;
 use Platim\PresenterBundle\PresenterContext\ObjectContext;
 use Platim\PresenterBundle\PresenterContext\ObjectContextFactory;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Controller\ArgumentValueResolverInterface;
+use Symfony\Component\HttpKernel\Controller\ValueResolverInterface;
 use Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
 
-class PresenterResolver implements ArgumentValueResolverInterface
+class PresenterResolver implements ValueResolverInterface
 {
     public function __construct(
         private readonly DataProviderContextFactory $dataProviderContextFactory,
@@ -23,22 +23,25 @@ class PresenterResolver implements ArgumentValueResolverInterface
     ) {
     }
 
-    public function supports(Request $request, ArgumentMetadata $argument): bool
+    public function resolve(Request $request, ArgumentMetadata $argument): iterable
     {
         $type = $argument->getType();
 
         if (!($type && interface_exists($type))) {
-            return false;
+            return [];
         }
 
         $reflection = new \ReflectionClass($type);
 
-        return $reflection->isInterface()
-            && $reflection->implementsInterface(PresenterInterface::class);
-    }
+        if (
+            !(
+                $reflection->isInterface()
+                && $reflection->implementsInterface(PresenterInterface::class)
+            )
+        ) {
+            return [];
+        }
 
-    public function resolve(Request $request, ArgumentMetadata $argument): iterable
-    {
         $objectContext = $this->objectContextFactory->createFromInputBug($request->query);
         $dataProviderContext = $this->dataProviderContextFactory->createFromInputBug($request->query);
 
