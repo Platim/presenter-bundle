@@ -60,7 +60,7 @@ class ObjectNormalizer implements NormalizerInterface, SerializerAwareInterface
         return \count($result) ? $result : new \ArrayObject();
     }
 
-    public function supportsNormalization($data, string $format = null): bool
+    public function supportsNormalization($data, string $format = null, array $context = []): bool
     {
         if (\is_object($data)) {
             $class = $this->getObjectClass($data);

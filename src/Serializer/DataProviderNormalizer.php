@@ -34,7 +34,7 @@ class DataProviderNormalizer implements NormalizerInterface, SerializerAwareInte
     ) {
     }
 
-    public function supportsNormalization($data, string $format = null): bool
+    public function supportsNormalization($data, string $format = null, array $context = []): bool
     {
         if ($data instanceof DataProviderInterface) {
             return true;
