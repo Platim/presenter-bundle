@@ -75,12 +75,12 @@ class PresenterHandlerCompilerPass extends AbstractCompilerPass
         }
         $classHandlers = [];
         foreach ($classHandlersArray as $array) {
-            usort($array, static fn ($item1, $item2) => $item2['priority'] <=> $item1['priority']);
+            usort($array, static fn ($item1, $item2) => $item2[4] <=> $item1[4]);
             $classHandlers[] = array_shift($array);
         }
         $interfaceHandlers = [];
         foreach ($interfaceHandlersArray as $array) {
-            usort($array, static fn ($item1, $item2) => $item2['priority'] <=> $item1['priority']);
+            usort($array, static fn ($item1, $item2) => $item2[4] <=> $item1[4]);
             $interfaceHandlers[] = array_shift($array);
         }
         $commandDefinition = $container->getDefinition(PresenterHandlerRegistry::class);
