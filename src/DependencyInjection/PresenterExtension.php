@@ -22,9 +22,6 @@ class PresenterExtension extends ConfigurableExtension
      */
     protected function loadInternal(array $mergedConfig, ContainerBuilder $container): void
     {
-        $container->registerForAutoconfiguration(PresenterHandlerInterface::class)
-            ->addTag('presenter.handler');
-
         $container->registerForAutoconfiguration(DataProviderInterface::class)
             ->addTag('presenter.data_provider');
 
@@ -45,6 +42,9 @@ class PresenterExtension extends ConfigurableExtension
                 $definition->addTag('presenter.name_converter', $tagAttributes);
             }
         );
+
+        $container->registerForAutoconfiguration(PresenterHandlerInterface::class)
+            ->addTag('presenter.handler');
 
         $loader = new YamlFileLoader(
             $container,
